@@ -10,11 +10,123 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <style>
+        .navbar {
+            background-color: #000;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #fff;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #f8d64e;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: #f8d64e;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            /* Full viewport height */
+            overflow: hidden;
+            background-color: #000;
+            /* Fallback for video loading */
+        }
+
+        /* Video Container */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            /* Send it behind the content */
+        }
+
+        .video-iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the video covers the container */
+            pointer-events: none;
+            /* Prevents interaction with the video */
+        }
+
+        /* Content Overlay */
+        .hero-content {
+            z-index: 1;
+            /* Bring content above the video */
+            max-width: 800px;
+            /* Limit the width of the content */
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .scroll-indicator .icon {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            margin: 0 auto;
+            animation: bounce 1.5s infinite;
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="#"><img
                         src="//images.squarespace-cdn.com/content/v1/5df018ec4c9d61288094246c/1576076380070-SDT3F3WWHI3JZGE1PY18/qb_logo.png"
@@ -27,7 +139,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Trade</a>
@@ -55,7 +167,36 @@
             </div>
         </nav>
     </header>
-    <main></main>
+    <main>
+        <section id="home-hero" class="hero-section d-flex flex-column justify-content-center align-items-center">
+            <!-- Video Background -->
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/804207469?background=1&autoplay=1&loop=1&muted=1"
+                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen class="video-iframe">
+                </iframe>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="hero-content text-center text-white">
+                <h1 class="display-4">Intelligent Execution. It’s What We Do.</h1>
+                <p class="lead">
+                    Quantitative Brokers’ goal is to be the world’s market-leading provider of Quantitative Research
+                    driven
+                    Execution Algorithms for Listed and OTC financial instruments.
+                </p>
+                <a href="/algorithms" class="btn btn-primary btn-lg">Learn About Our Execution Strategies</a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <p>Scroll</p>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 16l-6-6h12z" />
+                </svg>
+            </div>
+        </section>
+
+    </main>
     <footer>
         <!-- place footer here -->
     </footer>
