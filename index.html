@@ -2,24 +2,31 @@
 <html lang="en">
 
 <head>
-    <title>Favorite Website</title>
-    <!-- Required meta tags -->
+    <title>Quantitative Brokers Clone</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling*/
         .navbar {
             background-color: #000;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .navbar-brand img {
+            height: 40px;
         }
 
         .nav-link {
-            position: relative;
             color: #fff;
-            transition: color 0.2s ease-in-out;
+            font-size: 16px;
+            margin-right: 1.5rem;
         }
 
         .nav-link:hover,
@@ -27,189 +34,313 @@
             color: #f8d64e;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background-color: #f8d64e;
-            transition: width 0.3s ease-in-out;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* Hero Section Styling*/
         .hero-section {
             position: relative;
             min-height: 100vh;
-            /* Full viewport height */
-            overflow: hidden;
             background-color: #000;
-            /* Fallback for video loading */
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Video Container */
-        .video-container {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            /* Send it behind the content */
-        }
-
-        .video-iframe {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            /* Ensures the video covers the container */
-            pointer-events: none;
-            /* Prevents interaction with the video */
+            z-index: -1;
         }
 
-        /* Content Overlay */
         .hero-content {
+            text-align: center;
             z-index: 1;
-            /* Bring content above the video */
-            max-width: 800px;
-            /* Limit the width of the content */
-            margin: 0 auto;
         }
 
-        .hero-content h1 {
+        .btn-primary {
+            background-color: #f8d64e;
+            border: none;
+            padding: 0.75rem 2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #d4b047;
+        }
+
+        /* Table Styling*/
+        .table-section h2 {
+            font-size: 2rem;
             font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
             margin-bottom: 2rem;
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
+        .table {
+            margin-top: 1rem;
+        }
+
+        .table th,
+        .table td {
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        .table-dark th {
+            background-color: #000;
             color: #fff;
         }
 
-        .scroll-indicator .icon {
-            width: 24px;
-            height: 24px;
-            fill: #fff;
-            margin: 0 auto;
-            animation: bounce 1.5s infinite;
+        /* Form Section Styling*/
+        .form-section {
+
+            padding: 3rem 0;
         }
 
-        /* Bounce Animation */
-        @keyframes bounce {
+        .form-section h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+        .card {
+            border-radius: 0;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-            50% {
-                transform: translateY(10px);
-            }
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-group-text {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 0;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border: 1px solid #ddd;
+        }
+
+        .btn-primary {
+            background-color: #f8d64e;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 0;
+        }
+
+        .btn-primary:hover {
+            background-color: #d4b047;
+        }
+
+        .invalid-feedback {
+            font-size: 0.875rem;
+            color: red;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#"><img
-                        src="//images.squarespace-cdn.com/content/v1/5df018ec4c9d61288094246c/1576076380070-SDT3F3WWHI3JZGE1PY18/qb_logo.png"
-                        alt="Quantitative Brokers" class="Mobile-bar-branding-logo"
-                        style="display: block; height: 40px;"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Trade</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Algorithms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Analytics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Workflow</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Research</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://images.squarespace-cdn.com/content/v1/5df018ec4c9d61288094246c/1576076380070-SDT3F3WWHI3JZGE1PY18/qb_logo.png"
+                    alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/804207469?background=1&autoplay=1&loop=1&muted=1"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="hero-content">
+            <h1>Intelligent Execution. It’s What We Do.</h1>
+            <p>Quantitative Brokers provides advanced algorithmic solutions for financial markets.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Solutions</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Solution 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Algorithmic Trading</h5>
+                            <p class="card-text">Optimize your trades with our advanced execution strategies.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Solution 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Workflow Automation</h5>
+                            <p class="card-text">Improve efficiency with our custom trading workflows.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Solution 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Market Analytics</h5>
+                            <p class="card-text">Gain insights with our real-time analytics tools.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <main>
-        <section id="home-hero" class="hero-section d-flex flex-column justify-content-center align-items-center">
-            <!-- Video Background -->
-            <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/804207469?background=1&autoplay=1&loop=1&muted=1"
-                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen class="video-iframe">
-                </iframe>
-            </div>
+        </div>
+    </section>
 
-            <!-- Content Overlay -->
-            <div class="hero-content text-center text-white">
-                <h1 class="display-4">Intelligent Execution. It’s What We Do.</h1>
-                <p class="lead">
-                    Quantitative Brokers’ goal is to be the world’s market-leading provider of Quantitative Research
-                    driven
-                    Execution Algorithms for Listed and OTC financial instruments.
-                </p>
-                <a href="/algorithms" class="btn btn-primary btn-lg">Learn About Our Execution Strategies</a>
+    <section class="table-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Pricing Table</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Service</th>
+                            <th>Basic</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Algorithmic Trading</td>
+                            <td>$500</td>
+                            <td>$1000</td>
+                        </tr>
+                        <tr>
+                            <td>Workflow Automation</td>
+                            <td>$400</td>
+                            <td>$800</td>
+                        </tr>
+                        <tr>
+                            <td>Market Analytics</td>
+                            <td>$300</td>
+                            <td>$600</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </section>
 
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator">
-                <p>Scroll</p>
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 16l-6-6h12z" />
-                </svg>
+
+    <!-- form -->
+    <section class="form-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                                        required>
+                                </div>
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                                        required>
+                                </div>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="message" rows="4"
+                                    placeholder="Write your message here" required></textarea>
+                                <div class="invalid-feedback">Please enter your message.</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">FAQs</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq1">What services do you offer?</button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show">
+                        <div class="accordion-body">We offer algorithmic trading, workflow automation, and analytics
+                            tools.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">How can I get started?</button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse">
+                        <div class="accordion-body">Contact us through our form or call us directly.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <!-- place footer here -->
+        <p>&copy; 2024 Quantitative Brokers Clone. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
